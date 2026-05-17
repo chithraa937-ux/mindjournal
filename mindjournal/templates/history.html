@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MindJournal AI - History</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --bg:#0d0d12;
+  --surface:#16161f;
+  --surface2:#1e1e2a;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --text:#f0eff6;
+  --muted:#7b7a8e;
+  --accent:#7c6af7;
+  --accent2:#a78bfa;
+  --green:#34d399;
+  --red:#f87171;
+  --amber:#fbbf24;
+  --blue:#60a5fa;
+  --teal:#2dd4bf;
+  --radius:14px;
+  --radius-sm:8px;
+  --serif:'DM Serif Display', serif;
+  --sans:'DM Sans', sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+}
+
+.app-layout{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  padding:1.5rem 1rem;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:2rem;
+}
+
+.brand-icon{
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  background:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+}
+
+.brand-name{
+  font-family:var(--serif);
+  font-size:22px;
+}
+
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border-radius:var(--radius-sm);
+  color:var(--muted);
+  cursor:pointer;
+  margin-bottom:6px;
+  transition:0.2s;
+}
+
+.nav-item:hover{
+  background:var(--surface2);
+  color:var(--text);
+}
+
+.nav-item.active{
+  background:rgba(124,106,247,0.15);
+  border:1px solid rgba(124,106,247,0.2);
+  color:var(--accent2);
+}
+
+.sidebar-bottom{
+  margin-top:2rem;
+  border-top:1px solid var(--border);
+  padding-top:1rem;
+}
+
+.user-chip{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+}
+
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+}
+
+/* MAIN */
+
+.main-content{
+  padding:2rem 2.5rem;
+}
+
+.page-header{
+  margin-bottom:2rem;
+}
+
+.page-header h1{
+  font-family:var(--serif);
+  font-size:34px;
+  margin-bottom:6px;
+}
+
+.page-header p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* HISTORY */
+
+.history-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.history-item{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.3rem;
+  transition:0.2s;
+}
+
+.history-item:hover{
+  border-color:var(--border2);
+  transform:translateY(-2px);
+}
+
+.history-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.history-date{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.history-text{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:14px;
+  margin-bottom:14px;
+}
+
+.history-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.meta-tag{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:4px 12px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.emotion-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:500;
+}
+
+@media(max-width:900px){
+
+  .app-layout{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .main-content{
+    padding:1.2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">🧠</div>
+      <div class="brand-name">MindJournal</div>
+    </div>
+
+    <div class="nav-item">
+      ✏️ Journal
+    </div>
+
+    <div class="nav-item">
+      📊 Dashboard
+    </div>
+
+    <div class="nav-item active">
+      🕐 History
+    </div>
+
+    <div class="nav-item">
+      🧘 Wellness Toolkit
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="user-chip">
+        <div class="avatar">D</div>
+        <div>
+          <div style="font-size:13px;font-weight:500;">Demo User</div>
+          <div style="font-size:11px;color:var(--muted);">
+            14 day streak 🔥
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <div class="page-header">
+      <h1>Journal History</h1>
+      <p>All your previous journal entries and AI insights</p>
+    </div>
+
+    <div class="history-list">
+
+      <!-- ENTRY 1 -->
+      <div class="history-item">
+
+        <div class="history-top">
+          <div class="history-date">Today, 9:45 AM</div>
+
+          <span class="emotion-badge"
+          style="background:rgba(248,113,113,0.12);
+          color:var(--red);
+          border:1px solid rgba(248,113,113,0.3);">
+            😤 Stressed
+          </span>
+        </div>
+
+        <div class="history-text">
+          Overwhelmed with exam preparation. Couldn't concentrate at all.
+          Everything feels like too much right now.
+        </div>
+
+        <div class="history-meta">
+          <span class="meta-tag">Mood: 3.8/10</span>
+          <span class="meta-tag">Stress: High</span>
+          <span class="meta-tag">#exams</span>
+          <span class="meta-tag">#overwhelmed</span>
+        </div>
+
+      </div>
+
+      <!-- ENTRY 2 -->
+      <div class="history-item">
+
+        <div class="history-top">
+          <div class="history-date">Yesterday, 8:10 PM</div>
+
+          <span class="emotion-badge"
+          style="background:rgba(52,211,153,0.12);
+          color:var(--green);
+          border:1px solid rgba(52,211,153,0.3);">
+            😊 Happy
+          </span>
+        </div>
+
+        <div class="history-text">
+          Had a great day! Finished my project ahead of time and felt
+          really proud. Met friends in the evening.
+        </div>
+
+        <div class="history-meta">
+          <span class="meta-tag">Mood: 8.1/10</span>
+          <span class="meta-tag">Stress: Low</span>
+          <span class="meta-tag">#project</span>
+          <span class="meta-tag">#friends</span>
+        </div>
+
+      </div>
+
+      <!-- ENTRY 3 -->
+      <div class="history-item">
+
+        <div class="history-top">
+          <div class="history-date">2 days ago, 10:20 PM</div>
+
+          <span class="emotion-badge"
+          style="background:rgba(251,191,36,0.12);
+          color:var(--amber);
+          border:1px solid rgba(251,191,36,0.3);">
+            😰 Anxious
+          </span>
+        </div>
+
+        <div class="history-text">
+          Can't stop thinking about the upcoming presentation.
+          What if I mess it up? Everyone will be watching.
+        </div>
+
+        <div class="history-meta">
+          <span class="meta-tag">Mood: 4.2/10</span>
+          <span class="meta-tag">Stress: High</span>
+          <span class="meta-tag">#presentation</span>
+          <span class="meta-tag">#worried</span>
+        </div>
+
+      </div>
+
+      <!-- ENTRY 4 -->
+      <div class="history-item">
+
+        <div class="history-top">
+          <div class="history-date">3 days ago, 7:30 PM</div>
+
+          <span class="emotion-badge"
+          style="background:rgba(45,212,191,0.12);
+          color:var(--teal);
+          border:1px solid rgba(45,212,191,0.3);">
+            😌 Calm
+          </span>
+        </div>
+
+        <div class="history-text">
+          Peaceful evening walk. Did some light reading.
+          Feeling balanced and at ease with everything.
+        </div>
+
+        <div class="history-meta">
+          <span class="meta-tag">Mood: 7.5/10</span>
+          <span class="meta-tag">Stress: Low</span>
+          <span class="meta-tag">#peaceful</span>
+          <span class="meta-tag">#balanced</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

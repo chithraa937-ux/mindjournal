@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Sign In — MindJournal AI{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}"/>
+{% endblock %}
+
+{% block body %}
+<div class="auth-wrap">
+
+  <!-- Left branding panel -->
+  <div class="auth-left">
+    <div class="auth-grid-bg"></div>
+    <div class="auth-orb orb1"></div>
+    <div class="auth-orb orb2"></div>
+    <div class="auth-brand">
+      <div class="auth-brand-icon">🧠</div>
+      <div class="auth-brand-name">MindJournal AI</div>
+    </div>
+    <div class="auth-hero">
+      <h1>Your Mind,<br><span>Understood by AI</span></h1>
+      <p>Write freely, reflect deeply, and grow emotionally — with AI-powered insights that actually get you.</p>
+      <div class="auth-features">
+        <div class="auth-feature-chip">✏️ &nbsp;Daily AI Journal Analysis</div>
+        <div class="auth-feature-chip">📊 &nbsp;Mood & Emotion Tracking</div>
+        <div class="auth-feature-chip">🧘 &nbsp;Wellness Toolkit</div>
+        <div class="auth-feature-chip">🔥 &nbsp;Streak & Badge System</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right auth panel -->
+  <div class="auth-right">
+    <div class="auth-tab-row">
+      <button class="auth-tab active">Sign In</button>
+      <button class="auth-tab" onclick="location.href='{{ url_for('register') }}'">Register</button>
+    </div>
+
+    <form class="auth-form" method="POST" action="{{ url_for('login') }}">
+      <div class="auth-title">Welcome back</div>
+      <div class="auth-subtitle">Sign in to continue your wellness journey</div>
+
+      {% if error %}
+      <div class="error-msg show">{{ error }}</div>
+      {% endif %}
+
+      <div class="field">
+        <label>Email Address</label>
+        <div class="field-wrap">
+          <span class="field-icon">📧</span>
+          <input type="email" name="email" placeholder="you@example.com" required autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <div class="field-wrap">
+          <span class="field-icon">🔒</span>
+          <input type="password" name="password" id="login-password" placeholder="••••••••" required/>
+          <button class="pw-toggle" type="button" onclick="togglePw('login-password', this)">👁️</button>
+        </div>
+      </div>
+
+      <div class="forgot-row">
+        <label class="remember-label">
+          <input type="checkbox" name="remember"/> Remember me
+        </label>
+        <a class="forgot-link" href="#">Forgot password?</a>
+      </div>
+
+      <button class="btn-primary" type="submit">Sign In →</button>
+
+      <div class="auth-switch">
+        Don't have an account? <a href="{{ url_for('register') }}">Register</a>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<script>
+function togglePw(id, btn) {
+  const input = document.getElementById(id);
+  input.type = input.type === 'password' ? 'text' : 'password';
+  btn.textContent = input.type === 'password' ? '👁️' : '🙈';
+}
+</script>
+{% endblock %}

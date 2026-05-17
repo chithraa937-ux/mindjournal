@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}"/>
+{% endblock %}
+
+{% block body %}
+<div class="app-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">🧠</div>
+      <div class="brand-name">MindJournal AI</div>
+    </div>
+
+    <nav>
+      <a href="{{ url_for('journal') }}" class="nav-item {% if active == 'journal' %}active{% endif %}">
+        <span class="nav-icon">✏️</span> Journal
+      </a>
+      <a href="{{ url_for('dashboard') }}" class="nav-item {% if active == 'dashboard' %}active{% endif %}">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="{{ url_for('history') }}" class="nav-item {% if active == 'history' %}active{% endif %}">
+        <span class="nav-icon">📖</span> History
+      </a>
+      <a href="{{ url_for('wellness') }}" class="nav-item {% if active == 'wellness' %}active{% endif %}">
+        <span class="nav-icon">🧘</span> Wellness
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="user-chip">
+        <div class="avatar" id="sidebar-avatar">
+          {{ user.name[:2].upper() }}
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:500;">{{ user.name }}</div>
+          <div style="font-size:11px;color:var(--muted);">{{ user.email }}</div>
+        </div>
+      </div>
+      <a href="{{ url_for('logout') }}" class="nav-item" style="color:var(--red);margin-top:4px;">
+        <span class="nav-icon">🚪</span> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main content ── -->
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+</div>
+{% block modals %}{% endblock %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block page_js %}{% endblock %}
+{% endblock %}

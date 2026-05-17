@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}Wellness — MindJournal AI{% endblock %}
+{% set active = 'wellness' %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Wellness Toolkit</h1>
+  <p>Evidence-based tools to support your mental health</p>
+</div>
+
+<div class="toolkit-grid">
+  <div class="toolkit-card" onclick="openBreathing()">
+    <div class="toolkit-icon">🫁</div>
+    <div class="toolkit-name">Breathing Exercise</div>
+    <div class="toolkit-desc">4-7-8 technique for instant calm</div>
+  </div>
+  <div class="toolkit-card" onclick="openGratitude()">
+    <div class="toolkit-icon">🙏</div>
+    <div class="toolkit-name">Gratitude Prompt</div>
+    <div class="toolkit-desc">Shift focus to the positive</div>
+  </div>
+  <div class="toolkit-card" onclick="openAffirmation()">
+    <div class="toolkit-icon">💪</div>
+    <div class="toolkit-name">Daily Affirmation</div>
+    <div class="toolkit-desc">Start the day with intention</div>
+  </div>
+  <div class="toolkit-card" onclick="openGrounding()">
+    <div class="toolkit-icon">🌳</div>
+    <div class="toolkit-name">5-4-3-2-1 Grounding</div>
+    <div class="toolkit-desc">Anchor yourself in the present</div>
+  </div>
+  <div class="toolkit-card" onclick="openMeditation()">
+    <div class="toolkit-icon">🧘</div>
+    <div class="toolkit-name">Body Scan</div>
+    <div class="toolkit-desc">Release tension head to toe</div>
+  </div>
+  <div class="toolkit-card" onclick="openJournalPrompt()">
+    <div class="toolkit-icon">📝</div>
+    <div class="toolkit-name">Journal Prompt</div>
+    <div class="toolkit-desc">Stuck? Get a writing prompt</div>
+  </div>
+</div>
+
+<div class="card" id="wellness-output" style="margin-top:1.5rem;display:none;">
+  <div id="wellness-output-content"></div>
+</div>
+
+<!-- Breathing modal -->
+<div class="breathing-overlay" id="breathing-overlay">
+  <div class="breathing-modal">
+    <div style="font-family:var(--serif);font-size:22px;margin-bottom:6px;">4-7-8 Breathing</div>
+    <div style="font-size:13px;color:var(--muted);">Follow the circle. Breathe with it.</div>
+    <div class="breath-circle" id="breath-circle">Inhale</div>
+    <div style="font-size:14px;color:var(--muted);" id="breath-instruction">Get ready...</div>
+    <button class="close-btn" onclick="closeBreathing()">Done</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ url_for('static', filename='js/wellness.js') }}"></script>
+{% endblock %}

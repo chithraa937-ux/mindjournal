@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard — MindJournal AI{% endblock %}
+{% set active = 'dashboard' %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Your Dashboard</h1>
+  <p>Your emotional wellness at a glance</p>
+</div>
+
+<!-- Metrics row -->
+<div class="metrics-row">
+          <div class="metric-card"><div class="metric-val" style="color:var(--accent2);">47</div><div class="metric-lbl">Total entries</div></div>
+          <div class="metric-card"><div class="metric-val" style="color:var(--green);">6.8</div><div class="metric-lbl">Avg mood this week</div></div>
+          <div class="metric-card"><div class="metric-val" style="color:var(--red);">3</div><div class="metric-lbl">High stress days</div></div>
+          <div class="metric-card"><div class="metric-val" style="color:var(--amber);">🔥 14</div><div class="metric-lbl">Day streak</div></div>
+        </div>
+
+<!-- Weekly insight -->
+<div class="week-insight">
+          <div class="insight-heading">📋 Weekly AI Report</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;">Your average mood this week is <strong style="color:var(--green);">6.8/10</strong> — up from 5.4 last week. Your happiest day was <strong style="color:var(--text);">Wednesday</strong>. Your most frequent stress trigger is the word <strong style="color:var(--text);">"exams"</strong> (appeared 6 times). <br><br>💡 <em>Suggestion for next week:</em> Your Mondays consistently score below 5. Try planning something small to look forward to on Monday mornings — even a good breakfast makes a difference.</div>
+        </div>
+
+<!-- Charts grid -->
+<div class="dashboard-grid">
+          <div class="card">
+            <div class="card-title">This week's mood</div>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center;margin-top:0.5rem;">
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#1e4432;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);margin:0 auto;">M</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">4.2</div></div>
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#3b1f1f;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--red);margin:0 auto;">T</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">3.1</div></div>
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#1e4432;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);margin:0 auto;">W</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">8.1</div></div>
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#2a2418;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--amber);margin:0 auto;">T</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">5.5</div></div>
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#3b1f1f;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--red);margin:0 auto;">F</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">4.0</div></div>
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#1e4432;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);margin:0 auto;">S</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">7.8</div></div>
+              <div><div style="width:36px;height:36px;border-radius:50%;background:#1e4432;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--green);margin:0 auto;">S</div><div style="font-size:11px;color:var(--muted);margin-top:4px;">7.5</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Emotion breakdown (30 days)</div>
+            <div style="margin-top:0.5rem;">
+              <div class="emotion-bar"><div class="ebar-top"><span style="font-size:13px;">😰 Anxious</span><span style="color:var(--muted);">58%</span></div><div class="ebar-track"><div class="ebar-fill" style="width:58%;background:var(--amber);"></div></div></div>
+              <div class="emotion-bar"><div class="ebar-top"><span style="font-size:13px;">😊 Happy</span><span style="color:var(--muted);">42%</span></div><div class="ebar-track"><div class="ebar-fill" style="width:42%;background:var(--green);"></div></div></div>
+              <div class="emotion-bar"><div class="ebar-top"><span style="font-size:13px;">😤 Stressed</span><span style="color:var(--muted);">35%</span></div><div class="ebar-track"><div class="ebar-fill" style="width:35%;background:var(--red);"></div></div></div>
+              <div class="emotion-bar"><div class="ebar-top"><span style="font-size:13px;">😌 Calm</span><span style="color:var(--muted);">28%</span></div><div class="ebar-track"><div class="ebar-fill" style="width:28%;background:var(--teal);"></div></div></div>
+              <div class="emotion-bar"><div class="ebar-top"><span style="font-size:13px;">🤩 Motivated</span><span style="color:var(--muted);">18%</span></div><div class="ebar-track"><div class="ebar-fill" style="width:18%;background:var(--accent2);"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+<!-- Habit correlation -->
+<div class="card">
+  <div class="card-title">Habit–mood correlation</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:0.5rem;">
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:var(--radius-sm);">
+      <div style="font-size:24px;margin-bottom:6px;">🏃</div>
+      <div style="font-size:18px;font-weight:600;color:var(--green);">7.8</div>
+      <div style="font-size:11px;color:var(--muted);">Mood when exercised</div>
+    </div>
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:var(--radius-sm);">
+      <div style="font-size:24px;margin-bottom:6px;">😴</div>
+      <div style="font-size:18px;font-weight:600;color:var(--green);">7.2</div>
+      <div style="font-size:11px;color:var(--muted);">Mood with 7h+ sleep</div>
+    </div>
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:var(--radius-sm);">
+      <div style="font-size:24px;margin-bottom:6px;">📱</div>
+      <div style="font-size:18px;font-weight:600;color:var(--red);">4.1</div>
+      <div style="font-size:11px;color:var(--muted);">Mood with 5h+ screen</div>
+    </div>
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:var(--radius-sm);">
+      <div style="font-size:24px;margin-bottom:6px;">🥗</div>
+      <div style="font-size:18px;font-weight:600;color:var(--green);">6.9</div>
+      <div style="font-size:11px;color:var(--muted);">Mood with healthy food</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
